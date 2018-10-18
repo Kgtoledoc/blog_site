@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <a href="/dashboard">Dashboad</a>
+  <a href="/search">Search</a>
+  <a href="/new_article">Create a new article</a>
+
+  <input type="text" name="" id="searcher" placeholder="search"><button id="src-btn">Search</button>
+
+    <% articles.forEach((article) => {%>
+      <h2><%= article.title %></h2>
+      <p>Created by
+        <a href="/user/profile/<%= article.author.username %>">
+        <%= article.author.username %></a>
+      </p>
+      <img src="<%= article.image%>" alt="">
+      <p><%= article.descriptionv%> </p>
+      <% article.tags.forEach((tag) => { %>
+        <a href="/search/<%= tag %>"><%= tag %></a>
+      <% }) %>
+    <% })%>
+
+  <script>
+    let srcbtn = document.getElementById('src-btn');
+    srcbtn.addEventListener('click', function(){
+      window.location = "/search/" + document.getElementById('searcher').value;
+    })
+  </script>
+</body>
+</html>
